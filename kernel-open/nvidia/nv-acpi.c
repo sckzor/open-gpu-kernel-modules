@@ -738,9 +738,10 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
     acpi_bus_get_device(nvif_parent_gpu_handle, &device);
 
     nv_uninstall_notifier(device->driver_data, nv_acpi_event);
+    
+    device->driver_data = NULL;
 #endif
 
-    device->driver_data = NULL;
     nvif_parent_gpu_handle = NULL;
 
     return;
